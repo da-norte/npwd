@@ -1,6 +1,6 @@
 import React from 'react';
-import { BookUser } from 'lucide-react';
+import contacts from '../../../../../../src/apps/imgs/contacts.png'
 
-const ContactIcon: React.FC = () => <BookUser size={30} />;
+const ContactIcon: React.FC = () => <img src={contacts} alt="" />;
 
 export default ContactIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StickyNote } from 'lucide-react';
+import notes from '../../../../../../src/apps/imgs/notes.png'
 
-const NotesIcon: React.FC = () => <StickyNote size={30} />
+const NotesIcon: React.FC = () => <img src={notes} alt="" />;
 
 export default NotesIcon;

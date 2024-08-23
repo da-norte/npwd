@@ -13,20 +13,32 @@ import { toggleKeys } from '@ui/components/Input';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    textAlign: 'right',
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    padding: '5rem 3rem',
     height: 100,
+    backgroundColor: '#ffffff',
+    color: '#000',
+    border: 'none',
+    boxShadow: 'none',
   },
   input: {
-    flex: 1,
-    fontSize: theme.typography.h6.fontSize,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '32px',
+    color: '#000',
+    '& > input': {
+      textAlign: 'center',
+    },
   },
   iconBtn: {
-    padding: 10,
+    color: '#001fa8',
+    fontweight: 'bold',
+    fontSize: '14px',
   },
 }));
 
@@ -34,13 +46,10 @@ export const DialerInput: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const [t] = useTranslation();
-  const { initializeCall } = useCall();
 
   const { inputVal, set } = useContext<IDialInputCtx>(DialInputCtx);
 
-  const handleCall = (number: string) => {
-    initializeCall(number);
-  };
+
 
   const handleNewContact = (number: string) => {
     history.push(`/contacts/-1/?addNumber=${number}&referal=/phone/contacts`);
@@ -49,29 +58,21 @@ export const DialerInput: React.FC = () => {
   return (
     <Box component={Paper} className={classes.root}>
       <InputBase
-        placeholder={t('DIALER.INPUT_PLACEHOLDER')}
         className={classes.input}
         value={inputVal}
         onChange={(e) => set(e.target.value)}
       />
+
       <IconButton
-        color="primary"
         className={classes.iconBtn}
         disabled={inputVal <= ''}
-        onClick={() => handleCall(inputVal)}
-        size="large"
-      >
-        <PhoneIcon fontSize="large" />
-      </IconButton>
-      <IconButton
-        className={classes.iconBtn}
         onClick={() => handleNewContact(inputVal)}
         onMouseUp={() => {
           toggleKeys(false);
         }}
         size="large"
       >
-        <PersonAddIcon fontSize="large" />
+        Adicionar Número
       </IconButton>
     </Box>
   );

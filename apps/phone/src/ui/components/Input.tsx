@@ -130,11 +130,11 @@ export const NPWDTextarea: React.FC<TextareaProps> = ({ size, variant, className
 
 export const NPWDSearchInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({ ...props }) => {
 	return (
-		<div className="flex items-center justify-start bg-neutral-200 dark:bg-neutral-800 rounded-md px-2 space-x-2 border dark:border-neutral-700">
-			<Search className="h-5 w-5 dark:text-neutral-400"/>
+		<div className="flex items-center justify-start px-2 space-x-2 border rounded-md bg-neutral-200 dark:bg-neutral-800 dark:border-neutral-700">
+			<Search className="w-5 h-5 dark:text-neutral-400"/>
 			<input
 				{...props}
-				className="w-full text-base dark:text-neutral-100 py-2 bg-transparent outline-none"
+				className="w-full py-2 text-base bg-transparent outline-none dark:text-neutral-100"
 				onMouseUp={(e) => {
 					toggleKeys(false);
 					if (props.onMouseUp) {

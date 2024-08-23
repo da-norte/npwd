@@ -1,3 +1,48 @@
+
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+:root {
+  --size: max(5px, 1vmin);
+  --height: 40em;
+  --pad: 0.650em;
+  --border-radius: 3.333em;
+  --gutter: calc(var(--pad) * 2);
+  --scene-pad: 5vmin;
+  --bg-blur: 0.333em;
+  --button-width: 0.333em;
+  --notch-height: 3.33em;
+  --notch-width: 33.3%;
+  --notch-radius: calc(var(--border-radius) - calc(var(--pad) * 2));
+  --notch-duration: 0.333s;
+  --ease: cubic-bezier(.666, 0, .4, 1);
+  --ease-spring: cubic-bezier(.666, 0, .4, 1.2);
+  --ease-out: cubic-bezier(.15,0,.333,1);
+  --border-width: 0.2em;
+  --deep-blue: 220;
+  --gold: 22.5;
+  --space-black: 215;
+  --silver: 254;
+  --c-h: var(--deep-blue);
+  --c-s: 100%;
+  --c-l: 50%;
+  --border-width: 4px;
+}
+
+@-webkit-keyframes appear {
+  to {
+    /* transform: scale3d(1, 1, 1); */
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  to {
+    /* transform: scale3d(1, 1, 1); */
+    opacity: 1;
+  }
+}
+
+
 .PhoneWrapper {
   width: 100vw;
   height: 100vh;
@@ -7,37 +52,58 @@
 .Phone {
   position: absolute;
   right: 0;
-  width: 500px;
+  width: 460px;
   height: 1000px;
   background-size: cover;
 }
+#phone{
+  background: url('./iPhone-15-wallpaper-7.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.unlock{
+  animation: myAnim 2s ease 0s 1 normal forwards;
+  }
 
-.PhoneFrame {
-  position: absolute;
-  z-index: 999;
-  width: 500px;
-  height: 1000px;
-  pointer-events: none;
+.lockscreen{
+  background: url('./home.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cursor-pointer:hover{
+  cursor: pointer;
 }
 
 .PhoneScreen {
   overflow: hidden;
   position: absolute;
   background-color: black;
-  bottom: 100px;
-  left: 50px;
-  right: 50px;
-  top: 100px;
+  bottom: 110px;
+  left: 13px;
+  right: 81px;
+  top: 110px;
   display: flex;
   flex-direction: column;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 20px;
+  border-radius: 60px;
+}
+.bg-menu-transparent{
+  background-color: rgba(0, 0, 4, 0.6);
+}
+
+.bg-screen-transparent{
+  background-color: rgba(0, 0, 4, 0.2);
+}
+.text-menu-transparent{
+  color: rgba(0, 0, 4, 0.4);
 }
 
 .PhoneAppContainer {
-  height: 90%;
+  height: 96%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,4 +128,138 @@
 .notistack-SnackbarContainer {
   position: absolute !important;
   top: 0 !important;
+}
+
+.camera {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--notch-height);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  pointer-events: none;
+  position: relative;
+  z-index: 1500;
+  top: calc(var(--pad) * 2);
+  right: calc(50% - calc(var(--notch-width) * 0.5));
+  margin-right: calc(var(--pad) * 0.333);
+}
+
+.camera:before {
+  position: absolute !important;
+  top: -21px !important;
+  left: 100px !important;
+  content: "";
+  height: 22%;
+  z-index: 1500;
+  aspect-ratio: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0.25em #4c4da3;
+  background: radial-gradient(#6667ac, transparent 50%) no-repeat 33.3% 10%/75% 50%, radial-gradient(#454680, transparent 50%) no-repeat 60% 85%/50% 50%;
+  background-color: #080928;
+}
+
+.PhoneContainer{
+  filter: brightness(1) !important;
+  z-index:-1;
+  position: fixed;
+  top: 100px;
+  right: -150px;
+  width: 609px;
+  height: 600px;
+}
+.phone {
+  z-index:-1;
+  position: relative;
+  aspect-ratio: 37/76;
+  background: black;
+  height: var(--height);
+  border-radius: var(--border-radius);
+  box-shadow: 
+  0 0 0.1em 0.25em hsl(var(--c-h), 25%, 50%),
+  0 0 0 var(--border-width) hsl(var(--c-h), 100%, 30%);
+  box-sizing: border-box;
+  opacity: 1;
+  background:transparent;
+}
+.phone:before {
+  content: "";
+  top:-2px;
+  left: -2px;
+  border-radius: var(--border-radius);
+  position: absolute;
+  height: 804px;
+  width:393px;
+  box-shadow: white 0px 0px 2px 1px, white 0px 0px 0px 0.5px;
+  z-index:999;  
+}
+
+.buttons {
+  position: absolute;
+  inset: calc(var(--border-width) * -1);
+  pointer-events: none;
+}
+.buttons .left,
+.buttons .right {
+  position: absolute;
+  width: var(--button-width);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5em;
+}
+.buttons .left {
+  right: 100%;
+  top: calc(var(--border-radius) * 2);
+}
+.buttons .left .button:nth-child(1) {
+  height: 1.5em;
+  margin-bottom: 0.5em;
+}
+.buttons .right {
+  left: 100%;
+  transform: scale3d(-1, 1, 1);
+  top: calc(var(--border-radius) * 3);
+}
+.buttons .right .button {
+  height: 4.75em;
+}
+.buttons .button {
+  background: hsl(var(--c-h), 20%, 95%);
+  height: 3em;
+  box-shadow: inset -0.15em 0 0.1em black, inset 0 0 0.1em hsl(var(--c-h), 30%, 90%), inset 0 0.2em 0.1em hsl(var(--c-h), 30%, 90%), inset 0 -0.2em 0.1em hsl(var(--c-h), 30%, 90%), inset -0.1em 0.333em 0.1em rgba(0, 0, 0, 0.5), inset -0.1em -0.333em 0.1em rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 0.2em;
+  border-bottom-left-radius: 0.2em;
+}
+
+.screen-container {
+  position: absolute;
+  background:transparent;
+  inset: 0;
+  border-radius: var(--border-radius);
+  border: var(--pad) solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--pad) * 2);
+}
+.MuiSlider-thumb{
+  display:none !important;
+}
+
+
+@keyframes myAnim {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+    display:none;
+	}
+}
+
+.btn-call:hover{
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+  filter:brightness(0.9);
 }

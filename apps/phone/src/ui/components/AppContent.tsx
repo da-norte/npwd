@@ -33,7 +33,7 @@ export const AppContent: React.FC<AppContentTypes & BoxProps> = ({
 
   return (
     <div
-      className="flex flex-col flex-1 bg-neutral-100 dark:bg-neutral-900"
+      className="flex flex-col flex-1 bg-white"
       style={backdrop ? { overflow: 'hidden' } : { overflow: 'auto' }}
     >
       <Backdrop className={classes.backdrop} open={backdrop || false} onClick={onClickBackdrop} />

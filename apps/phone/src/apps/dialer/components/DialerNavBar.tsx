@@ -1,26 +1,11 @@
 import React, { useState } from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import PhoneIcon from '@mui/icons-material/Phone';
-import PersonIcon from '@mui/icons-material/Person';
-import HistoryIcon from '@mui/icons-material/History';
 import { useTranslation } from 'react-i18next';
-import { Contact, History, Phone } from 'lucide-react';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
-  icon: {
-    color: theme.palette.primary.main,
-  },
-}));
+import { CircleUserRound, Clock3, Phone } from 'lucide-react';
+import AppsIcon from '@mui/icons-material/Apps';
 
 const DialerNavBar: React.FC = () => {
-  const classes = useStyles();
   const { pathname } = useLocation();
   const [page, setPage] = useState(pathname);
   const [t] = useTranslation();
@@ -30,26 +15,27 @@ const DialerNavBar: React.FC = () => {
   };
 
   return (
-    <BottomNavigation value={page} onChange={handleChange} showLabels className={classes.root}>
+    <BottomNavigation value={page} onChange={handleChange} showLabels className={'px-1 pb-6 pt-0 border-0 m-0 bg-white h-24'}>
       <BottomNavigationAction
         value="/phone"
+        label="Recentes"
         component={NavLink}
-        icon={<History />}
+        icon={<Clock3 size="30px"/>}
         to="/phone"
       />
+       <BottomNavigationAction
+        value="/phone/contacts"
+        label="Contatos"
+        component={NavLink}
+        icon={<CircleUserRound size="30px"/>}
+        to="/phone/contacts"
+      />      
       <BottomNavigationAction
         value="/phone/dial"
-        color="secondary"
+        label="Teclado"
         component={NavLink}
-        icon={<Phone />}
+        icon={<AppsIcon fontSize="large"/>}
         to="/phone/dial"
-      />
-      <BottomNavigationAction
-        value="/phone/contacts"
-        color="secondary"
-        component={NavLink}
-        icon={<Contact />}
-        to="/phone/contacts"
       />
     </BottomNavigation>
   );

@@ -59,8 +59,8 @@ import ExampleIcon from '../icons/material/app/EXAMPLE';
 export interface IAppConfig {
   id: string;
   nameLocale: string;
-  backgroundColor: string;
-  color: string;
+  backgroundColor?: string;
+  color?: string;
   path: string;
   disable?: boolean;
   Route: React.FC<{ settings?: IPhoneSettings; i18n?: i18n; theme?: Theme }>;
@@ -135,8 +135,6 @@ export const APPS: IAppConfig[] = [
     id: 'CALCULATOR',
     nameLocale: 'APPS_CALCULATOR',
     icon: <Calculator />,
-    backgroundColor: purple[500],
-    color: grey[50],
     path: '/calculator',
     Route: () => (
       <AppRoute id="CALCULATOR" path="/calculator" component={CalculatorApp} emitOnOpen={false} />
@@ -193,8 +191,6 @@ export const APPS: IAppConfig[] = [
     id: 'NOTES',
     nameLocale: 'APPS_NOTES',
     icon: <NotesIcon />,
-    backgroundColor: NOTES_APP_PRIMARY_COLOR,
-    color: NOTES_APP_ICON_COLOR,
     path: '/notes',
     Route: () => <AppRoute id="NOTES" path="/notes" component={NotesApp} emitOnOpen={false} />,
   },

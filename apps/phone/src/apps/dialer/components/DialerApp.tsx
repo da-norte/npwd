@@ -19,14 +19,14 @@ export const DialerApp: React.FC = () => {
             <Route path="/phone/dial">
               <DialPage />
             </Route>
+            <React.Suspense fallback={<LoadingSpinner />}>
+              <Route path="/phone/contacts" component={ContactList} />
+            </React.Suspense>
             <Route exact path="/phone">
               <React.Suspense fallback={<LoadingSpinner />}>
                 <DialerHistory />
               </React.Suspense>
             </Route>
-            <React.Suspense fallback={<LoadingSpinner />}>
-              <Route path="/phone/contacts" component={ContactList} />
-            </React.Suspense>
           </Switch>
         </AppContent>
         <DialerNavBar />

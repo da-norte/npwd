@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-import {useDebounce} from '@os/phone/hooks/useDebounce';
-import {useSetContactFilterInput} from '../../hooks/state';
-import {NPWDInput, NPWDSearchInput} from '@ui/components';
-import {Search} from "lucide-react";
+import { useDebounce } from '@os/phone/hooks/useDebounce';
+import { useSetContactFilterInput } from '../../hooks/state';
+import { NPWDInput, NPWDSearchInput } from '@ui/components';
+import { Search } from "lucide-react";
 
 export const SearchContacts: React.FC = () => {
     const [t] = useTranslation();
@@ -19,13 +19,14 @@ export const SearchContacts: React.FC = () => {
     }, [debouncedVal, setFilterVal]);
 
     return (
-        <div className="w-full py-2">
-            <div className="flex items-center justify-start bg-neutral-200 dark:bg-neutral-800 rounded-md px-2 space-x-2 border dark:border-neutral-700">
-                <Search className="h-5 w-5 dark:text-neutral-400"/>
+        <div className="w-full">
+            <div className="flex items-center justify-start px-1 border rounded-md bg-neutral-200 dark:bg-gray-200">
+                <Search className="w-4 h-4 dark:text-gray-300" />
                 <NPWDInput
-                    className="group-focus:ring-2"
+                    className='h-8'
+                    style={{ background: 'rgb(229 231 235/1', color: 'black' }}
                     onChange={(e) => setInputVal(e.target.value)}
-                    placeholder={t('CONTACTS.PLACEHOLDER_SEARCH_CONTACTS')}
+                    placeholder={'Buscar'}
                     value={inputVal}
                 />
             </div>

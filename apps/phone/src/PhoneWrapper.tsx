@@ -7,14 +7,12 @@ import { useLocation } from 'react-router-dom';
 
 interface PhoneWrapperProps {
   children: React.ReactNode;
+  barCollapsed: boolean;
 }
 
-const PhoneWrapper: React.FC<PhoneWrapperProps> = ({ children }) => {
+const PhoneWrapper: React.FC<PhoneWrapperProps> = ({ children, barCollapsed }) => {
   const [settings] = useSettings();
   const { bottom, visibility } = usePhoneVisibility();
-  const wallpaper = useWallpaper();
-
-  const { pathname } = useLocation();
 
   return (
     <Slide direction="up" timeout={{ enter: 500, exit: 500 }} in={visibility}>
@@ -30,16 +28,10 @@ const PhoneWrapper: React.FC<PhoneWrapperProps> = ({ children }) => {
         >
           <div
             className="PhoneFrame"
-            style={{
-              backgroundImage: `url(media/frames/${settings.frame.value})`,
-            }}
           />
           <div
             id="phone"
-            className="PhoneScreen bg-neutral-100 dark:bg-neutral-900"
-            style={{
-              backgroundImage: pathname === '/' && wallpaper,
-            }}
+            className={"PhoneScreen bg-neutral-100 dark:bg-neutral-900"}
           >
             {children}
           </div>

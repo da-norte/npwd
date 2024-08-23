@@ -1,5 +1,5 @@
-import { Language } from '@mui/icons-material';
+import safary from '../../../../../../src/apps/imgs/safari-icon.webp'
 
-const BrowserIcon = () => <Language fontSize="small" />;
+const BrowserIcon = () => <img src={safary} alt="" />;
 
 export default BrowserIcon;

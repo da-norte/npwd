@@ -1,6 +1,6 @@
 import React from 'react';
-import { Settings } from '@mui/icons-material';
+import settings from '../../../../../../src/apps/imgs/settings.png'
 
-const SettingsIcon: React.FC = () => <Settings fontSize="small" />;
+const SettingsIcon: React.FC = () => <img src={settings} alt="" />;
 
 export default SettingsIcon;

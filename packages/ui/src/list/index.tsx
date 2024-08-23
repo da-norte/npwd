@@ -18,7 +18,7 @@ export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
 
 export const List: React.FC<ListProps> = ({ children }) => {
   return (
-    <ul className="my-4 divide-y divide-neutral-200 overflow-hidden rounded-xl dark:divide-neutral-700 dark:ring-1 dark:ring-gray-900/5 bg-white dark:bg-neutral-900">
+    <ul className="my-4 overflow-hidden text-black bg-white divide-y divide-neutral-50 dark:bg-transparent">
       {children}
     </ul>
   );
@@ -35,12 +35,12 @@ export const ListItem = ({
   children,
 }: ListItemProps) => {
   return (
-    <li className="dark:bg-neutral-900" onClick={button ? onClick : undefined}>
+    <li className="border-0 dark:bg-transparent" onClick={button ? onClick : undefined}>
       <div
         className={cn(
-          'relative flex items-center space-x-3 px-2 py-5',
-          'hover:bg-neutral-200/50 dark:bg-neutral-800 hover:dark:bg-neutral-800/50',
-          selected && 'bg-neutral-200 dark:bg-neutral-700',
+          'relative flex items-center space-x-3 px-1 py-2',
+          'hover:bg-transparent dark:bg-white hover:dark:bg-white border-0',
+          selected && 'bg-transparent dark:bg-transparent',
           button && 'cursor-pointer',
         )}
       >
@@ -62,7 +62,7 @@ export const ListItem = ({
               )}
             </div>
             {selected && (
-              <div className="absolute inset-y-0 right-0 flex items-center pr-4 text-neutral-900 dark:text-neutral-50 flex-none">
+              <div className="absolute inset-y-0 right-0 flex items-center flex-none pr-4 text-neutral-900 dark:text-neutral-50">
                 <Check />
               </div>
             )}
